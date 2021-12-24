@@ -5,7 +5,9 @@
 //#include "pro_control_fly.h"
 //#include "do_updown.h"
 
-
+/* 这个游戏创建当前数组width[14][31]时，会出现当鸟与移动墙碰撞时，不会跳出游戏，即游戏结束，出现了一个Bug*/
+/*而将数组创建为width[15][50]时，游戏一切正常*/
+/*此bug还没有解决，猜测可能与墙的生成有关*/
 void updown_para_set(char width[14][31], int* fposition, int* ddong, int move)  //鸟向上移动 1，向下移动 0
 {
     if  (move)
@@ -21,7 +23,8 @@ void updown_para_set(char width[14][31], int* fposition, int* ddong, int move)  
         width[*fposition + 1][7] = ' ';
     }
     else 
-        //开始，鸟先动
+    {   
+	 //开始，鸟先动
         *fposition += 1;                   
         if (width[*fposition][7] == '*')               //7是设置的初始坐标   //*是设置的边界样式
         {
@@ -30,6 +33,7 @@ void updown_para_set(char width[14][31], int* fposition, int* ddong, int move)  
         }
         width[*fposition][7] = 'm';
         width[*fposition - 1][7] = ' ';
+    }
 
 }
 int main ()
@@ -187,91 +191,5 @@ int main ()
         replace = getch();
     }
     return 0;
-    // }
-    
-    // if (ddong)
-    // {
-    //     ddong_value = 0;
-    //     return ddong_value;
-    // }
-    // else
-    // {
-    //     ddong_value = 1;
-    //     return ddong_value;
-    // }
-    // if (fly_value)
-    // {
-    //     updown_para_set(width[14][31], &fposition, &ddong, 1);
-    //     fly_value -=1;
-    // }
-    // if(kbhit())
-    // {
-    //     fly_single = getch();
-    //     if (fly_single == ' ')
-    //     {
-    //         fly_value = 2;
-    //         ddong = 0;
-    //     }
-    // }
-    // else if (go_step % 2 == 0 && fly_value == 0)
-    // {
-    //     updown_para_set(width[14][31], &fposition, &ddong, 0);
-    // }
-    // if (go_step % 20 ==0)
-    // {
-    //     gen_wall = rand() % (12 - empty_wall) + 2;
-    //     for (wline = 1;wline < 13; wline++)
-    //     {
-    //         if (wline < gen_wall || wline > gen_wall + empty_wall)
-    //         {
-    //             width[wline][31] = '*';
-    //         }
-    //         else 
-    //         {
-    //             width[wline][31] = ' ';
-    //         }
-    //     }
-
-    // }
-    // for (wcolumn = 0;wcolumn < 31;wcolumn++)
-    // {
-    //     if (width[1][wcolumn] == '*')
-    //     {
-    //         if (wcolumn == 0)
-    //         {
-    //             for (wline = 0;wline < 13;wline++)
-    //             {
-    //                 width[wline][wcolumn] = ' ';
-    //             }
-    //         }
-    //         else 
-    //         {
-    //             for (wline = 0;wline < 13;wline++)
-    //             {
-    //                 if (width[wline][wcolumn] = '*')
-    //                 {
-    //                     width[wline][wcolumn - 1] = '*';
-    //                     width[wline][wcolumn] = '*';
-    //                 }
-    //             }
-    //             if (wcolumn == 7)
-    //             {
-    //                 point += 1;
-    //             }
-    //         }
-    //     }
-    // }
-    // max_point = (point > max_point) ? point : max_point;
-    // if (go_step % 90 == 0)
-    // {
-    //     empty_wall -= 1;
-    // }
-    // go_step += 1;
-    // sleep (200);
-    // system ("cls");
-	// printf ("\n\n\t你鸟没了！\n\n\t你的分数：%d\t最高分：%d\n\n", point, max_point);
-	// printf ("\t\t按空格键重新开始");
-    // system ("pause");
-    // replace = getch();
     
 }
