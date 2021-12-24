@@ -6,26 +6,26 @@
 //#include "do_updown.h"
 
 
-void updown_para_set(char width[14][31], int* fposition, int* ddong, int move)  //ÄñÏòÉÏÒÆ¶¯ 1£¬ÏòÏÂÒÆ¶¯ 0
+void updown_para_set(char width[14][31], int* fposition, int* ddong, int move)  //é¸Ÿå‘ä¸Šç§»åŠ¨ 1ï¼Œå‘ä¸‹ç§»åŠ¨ 0
 {
     if  (move)
     {
-        //¿ªÊ¼£¬ÄñÏÈ¶¯
+        //å¼€å§‹ï¼Œé¸Ÿå…ˆåŠ¨
         *fposition -= 1;                   
-        if (width[*fposition][7] == '*')               //7ÊÇÉèÖÃµÄ³õÊ¼×ø±ê   //*ÊÇÉèÖÃµÄ±ß½çÑùÊ½
+        if (width[*fposition][7] == '*')               //7æ˜¯è®¾ç½®çš„åˆå§‹åæ ‡   //*æ˜¯è®¾ç½®çš„è¾¹ç•Œæ ·å¼
         {
-            //×²Ç½¼Ç×ö0
+            //æ’å¢™è®°åš0
             *ddong = 0;                           
         }
         width[*fposition][7] = 'm';
         width[*fposition + 1][7] = ' ';
     }
     else 
-        //¿ªÊ¼£¬ÄñÏÈ¶¯
+        //å¼€å§‹ï¼Œé¸Ÿå…ˆåŠ¨
         *fposition += 1;                   
-        if (width[*fposition][7] == '*')               //7ÊÇÉèÖÃµÄ³õÊ¼×ø±ê   //*ÊÇÉèÖÃµÄ±ß½çÑùÊ½
+        if (width[*fposition][7] == '*')               //7æ˜¯è®¾ç½®çš„åˆå§‹åæ ‡   //*æ˜¯è®¾ç½®çš„è¾¹ç•Œæ ·å¼
         {
-            //×²Ç½¼Ç×ö0
+            //æ’å¢™è®°åš0
             *ddong = 0;                           
         }
         width[*fposition][7] = 'm';
@@ -64,9 +64,9 @@ int main ()
                 width[wline][wcolumn] = ' ';
             }
         }
-        //µØÍ¼²¼ÖÃ
+        //åœ°å›¾å¸ƒç½®
         
-        //µØÍ¼±ß½çÉè¼Æ
+        //åœ°å›¾è¾¹ç•Œè®¾è®¡
         for (int wcolumn = 0;wcolumn <= 30;wcolumn++)
         {
             width [0][wcolumn] = '*';
@@ -85,7 +85,7 @@ int main ()
 
         while (ddong_value == 1)
         {
-            system("cls");                  // Ã¿´Î´òÓ¡ÒªÇåÆÁ
+            system("cls");                  // æ¯æ¬¡æ‰“å°è¦æ¸…å±
             for (int wline = 0;wline < 14;wline++)
             {
                 for (int wcolumn = 0; wcolumn < 31;wcolumn++)
@@ -93,16 +93,16 @@ int main ()
                     putchar(width [wline][wcolumn]);
                 
                 }
-                putchar (10);       //´òÓ¡»»ĞĞ
+                putchar (10);       //æ‰“å°æ¢è¡Œ
             }
-            printf("\tÄãµÄ·ÖÊı£º%d\t×î¸ß·Ö£º%d  ", point, max_point);
+            printf("\tä½ çš„åˆ†æ•°ï¼š%d\tæœ€é«˜åˆ†ï¼š%d  ", point, max_point);
             if (ddong == 1)
             {
-                printf("°´¿Õ¸ñ¼ü·É");
+                printf("æŒ‰ç©ºæ ¼é”®é£");
             }
             else 
             {
-                printf("Îßºş~~");
+                printf("èŠœæ¹–~~");
             }
             if (fly_value)
             {
@@ -129,16 +129,16 @@ int main ()
                 {
                     if (wline < gen_wall || wline >= gen_wall + empty_wall)
                     {
-                        width[wline][31] = '*';
+                        width[wline][30] = '*';
                     }
                     else 
                     {
-                        width[wline][31] = ' ';
+                        width[wline][30] = ' ';
                     }
                 }
 
             }
-            for (wcolumn = 0;wcolumn < 31;wcolumn++)                /// Õâ¸öforÑ­»· ÎÊÌâºÜ´ó£¨È±·¦ÖªÊ¶µã£©
+            for (wcolumn = 0;wcolumn < 31;wcolumn++)                /// è¿™ä¸ªforå¾ªç¯ é—®é¢˜å¾ˆå¤§ï¼ˆç¼ºä¹çŸ¥è¯†ç‚¹ï¼‰ å·²è§£å†³
             {
                 if (width[1][wcolumn] == '*')
                 {
@@ -174,15 +174,15 @@ int main ()
             go_step += 1;
             Sleep (200);
             // system ("cls");
-            // printf ("\n\n\tÄãÄñÃ»ÁË£¡\n\n\tÄãµÄ·ÖÊı£º%d\t×î¸ß·Ö£º%d\n\n", point, max_point);
-            // printf ("\t\t°´¿Õ¸ñ¼üÖØĞÂ¿ªÊ¼");
+            // printf ("\n\n\tä½ é¸Ÿæ²¡äº†ï¼\n\n\tä½ çš„åˆ†æ•°ï¼š%d\tæœ€é«˜åˆ†ï¼š%d\n\n", point, max_point);
+            // printf ("\t\tæŒ‰ç©ºæ ¼é”®é‡æ–°å¼€å§‹");
             // //system ("pause");
             // replace = getch();
 
         }
         system ("cls");
-        printf ("\n\n\tÄãÄñÃ»ÁË£¡\n\n\tÄãµÄ·ÖÊı£º%d\t×î¸ß·Ö£º%d\n\n", point, max_point);
-        printf ("\t\t°´¿Õ¸ñ¼üÖØĞÂ¿ªÊ¼");
+        printf ("\n\n\tä½ é¸Ÿæ²¡äº†ï¼\n\n\tä½ çš„åˆ†æ•°ï¼š%d\tæœ€é«˜åˆ†ï¼š%d\n\n", point, max_point);
+        printf ("\t\tæŒ‰ç©ºæ ¼é”®é‡æ–°å¼€å§‹");
         //system ("pause");
         replace = getch();
     }
@@ -269,8 +269,8 @@ int main ()
     // go_step += 1;
     // sleep (200);
     // system ("cls");
-	// printf ("\n\n\tÄãÄñÃ»ÁË£¡\n\n\tÄãµÄ·ÖÊı£º%d\t×î¸ß·Ö£º%d\n\n", point, max_point);
-	// printf ("\t\t°´¿Õ¸ñ¼üÖØĞÂ¿ªÊ¼");
+	// printf ("\n\n\tä½ é¸Ÿæ²¡äº†ï¼\n\n\tä½ çš„åˆ†æ•°ï¼š%d\tæœ€é«˜åˆ†ï¼š%d\n\n", point, max_point);
+	// printf ("\t\tæŒ‰ç©ºæ ¼é”®é‡æ–°å¼€å§‹");
     // system ("pause");
     // replace = getch();
     
