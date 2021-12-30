@@ -70,4 +70,33 @@ int main()
 ****************************************************/
 
 
+/***********************
+/* void gotoxy(int x, int y)
+{
+
+    COORD coord;
+
+    coord.X = x;
+
+    coord.Y = y;
+
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);       
+    //SetConsolecursorposition设置指定控制台屏幕缓冲区中的光标位置 
+    //GetStdHandle 检索指定标准设备的句柄
+    //((DWORD)-10) 实际上是无符号数 4294967286。
+
+}
+void GotoXY(int x, int y)
+{
+    HANDLE a;
+    COORD b;
+    fflush(stdout);
+    b.X = x;
+    b.Y = y;
+    a = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleCursorPosition(a,b);
+} */
+
+************************/
+
 
