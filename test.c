@@ -35,3 +35,79 @@ int main()
 如果第二个是后置++，那么会将其视为前置++进行运算
 */
 /*Linux环境下，计算自增的式子有一定的顺序，比如说三个式子，前两个式子会先相加，在判断第三个式子*/
+
+
+//对文件操作无法写入的问题，一定要记得关闭文件,文件指针置空
+//关于读文件并在标准输出流打印，需要用到一个rewind()的函数 ，将文件指针移到由流指定的开始处
+//
+void test()
+{
+    char name[20], tele[20];
+    char number[20] = {0};
+    char line_food = '\r';
+    int num;
+    int i = 0;
+    FILE *content = fopen("contacts.txt", "a+"); //附加文本 ：
+    if (content == NULL)
+    {
+        cout << "fail to open file";
+    }
+    else
+    {
+        system("cls");
+        cout << "please enter order number :" << endl; //底层函数？？？？.
+        while (cin >> num)                             //输入文件结束符CTRL + Z // >> 与 << 这两个操作符传参是地址(这只是其一，这两个操作符有很多重载)
+        {
+            if (i == 0)
+            {
+                system("cls");
+                cout << "please enter order number :" << endl;
+                // rewind (content);      //只能指向一次！！？？ //还不懂
+                fprintf(content, "number : %d \n", num); //文件流输出没有int类型的？？
+                // cout << "hello";
+                // cout << &num << endl;
+                i++;
+                cout << i << endl;
+                // system ("cls");
+                cout << "please enter name :" << endl;
+                while (cin >> num)
+                {
+                    if (i == 1)
+                    {
+                        // rewind (content);
+                        fprintf(content, "name : %d \n", num);
+                        i++;
+                        cout << i << endl;
+                        // system ("cls");
+                        cout << "please enter telephone number :" << endl;
+                        while (cin >> num)
+                        {
+                            if (i == 2)
+                            {
+                                // rewind (content);
+                                fprintf(content, "telephone number : %d \n", num);
+                                i = 0;
+                                cout << i << endl;
+                                fclose(content);
+                            }
+                            // break; //返回上一级输入
+                        }
+                    }
+                }
+            }
+            // if (i == 0)
+            // {
+
+            //     rewind(content);
+            //     fputs(&number[0], content); //文件流输出没有int类型的？？
+            //     // cout << "hello";
+            //     cout << number[0];
+            //     i++;
+            //     cout << i;
+            //     break; //一次打印
+            //     system ("cls");
+            //     cout << "please enter name :" << endl;
+            // }
+        }
+    }
+}
