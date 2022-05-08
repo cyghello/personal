@@ -1,0 +1,26 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "D:\\bianchen\\mingw64\\lib"
+                //"D:/bianchen/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include",
+                //"D:/bianchen/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed",
+                //"D:/bianchen/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"
+            ], //包含路径
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "cppStandard": "c++14",
+            "cStandard": "c11",
+            "compilerPath": "D:\\bianchen\\mingw64\bin\\gdb.exe",
+            //"intelliSenseMode": "macos-gcc-x64",
+            "intelliSenseMode": "gcc-x64", ///
+            "windowsSdkVersion": "10.0.19041.0"
+        }
+    ],
+    "version": 4
+}
